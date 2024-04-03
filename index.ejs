@@ -1,0 +1,1407 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>burud samaj vadhu-var suchak samiti</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicon -->
+    <link href="/img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500&family=Roboto:wght@500;700;900&display=swap"
+        rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/faq.css">
+
+    <!-- bs4 links here -->
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
+    <!-- css link -->
+    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="css/profile.css">
+    <!-- font icon links -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+        integrity="sha384-GLhlTQ8iN17SmeVH6qyuqF7rTlM6HAPB4l+K5cI8PTq5FfF5s2r0dAizPj7b" crossorigin="anonymous">
+
+
+
+
+
+</head>
+
+<body>
+    <!-- Spinner Start -->
+    <div id="spinner"
+        class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div class="spinner-grow text-primary" style="width: 3rem; height: 3rem;" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+    <!-- Spinner End -->
+
+
+    <!-- Navbar Start -->
+    <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0 wow fadeIn" data-wow-delay="0.1s">
+        <a href="index.html" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
+            <h2 style="font-family:fantasy;"><span class="text-warning" style="text-decoration:underline;">BURUD</span>
+                <span class="text-danger">BANDHAN</span>
+            </h2>
+        </a>
+        <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav ms-auto p-4 p-lg-0">
+
+                <a href="/about" class="nav-item nav-link">About</a>
+                <a href=" /search" class="nav-item nav-link">search</a>
+
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Stories</a>
+                    <div class="dropdown-menu rounded-0 rounded-bottom m-0" style="border-top: 1px solid blue;">
+                        <a href="/success-stories" class="dropdown-item">Sucess Stories</a>
+                        <a href="/success-videos" class="dropdown-item">Success videos</a>
+                    </div>
+                </div>
+                <div class="nav-item dropdown">
+                    <a href="/profile" class="nav-item nav-link">profile</a>
+                </div>
+
+                <% if (user) { %>
+                    <a href="/login" class="nav-item nav-link" style="display: none;">Login</a>
+                    <% } else { %>
+                        <a href="/login" class="nav-item nav-link">Login</a>
+                        <% } %>
+            </div>
+
+
+            <div class="profile">
+                <% if (user) { %>
+                    <div class="dropdown d-none d-lg-block">
+                        <a href="#"
+                            class="btn btn-danger rounded-0 py-4 px-lg-5 d-flex align-items-center dropdown-toggle"
+                            data-bs-toggle="dropdown">
+                            <span class="me-2">
+                                <img src="/img/logo/avatar.svg" width="25px" class="img-fluid" alt="">
+                            </span>
+                            <%=user.firstname%>
+
+                        </a>
+                        <ul class="dropdown-menu shadow">
+
+                            <% if(userprofile){ %>
+                                <li><a class="dropdown-item" href="profiles/<%=userprofile.id%>"><i
+                                            class="bi bi-person-circle me-1"></i> Profile</a></li>
+                                <li><a class="dropdown-item" href="photos/<%=userprofile.id%>"><i
+                                            class="bi bi-person-circle me-1"></i> Profile photos</a></li>
+                                <li>
+                                    <a class="dropdown-item" href=""><i class="bi bi-app-indicator me-1"></i>
+                                        Requests</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href=""><i class="bi bi-people me-1"></i>Connections</a>
+                                </li>
+                                <%} else{%>
+                                    <li><a class="dropdown-item" href="javascript:void(0)" onclick="addProfile()"><i
+                                                class="bi bi-person-circle me-1"></i> Create profile</a></li>
+                                    <%}%>
+                                        <li>
+                                            <hr class="dropdown-divider">
+                                        </li>
+                                        <li><a class="dropdown-item" href="/logout"><i
+                                                    class="bi bi-box-arrow-right me-1"></i> Logout</a>
+                                        </li>
+                        </ul>
+                    </div>
+
+                    <% } else { %>
+                        <a href="/signup" class="btn btn-danger rounded-0 py-4 px-lg-5 d-none d-lg-block">Register
+                            here<i class="fa fa-arrow-right ms-3"></i></a>
+                        <% } %>
+            </div>
+        </div>
+    </nav>
+    <!-- Navbar End -->
+
+
+    <!-- Header Start -->
+    <div class="container-fluid header pd p-0 mb-0 bg-danger">
+        <div class="row g-0 align-items-center flex-column-reverse flex-lg-row m-0">
+            <div class="col-lg-6 p-5 wow fadeIn" data-wow-delay="0.1s">
+                <div>
+                    <img src="https://cdn.pixabay.com/animation/2023/07/24/12/22/12-22-22-39_512.gif" height="200"
+                        alt="">
+                </div>
+                <h1 class="display-4 text-white mb-5 fw-bold ">अखिल महाराष्ट्र् बुरुड समाज वधूवर सूचक समिती</h1>
+                <div class="row g-4">
+                    <div class="col-sm-4">
+                        <div class="border-start border-light ps-4">
+                            <h2 class="text-white mb-1" data-toggle="counter-up">123</h2>
+                            <p class="text-light mb-0">Total Grooms</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="border-start border-light ps-4">
+                            <h2 class="text-white mb-1" data-toggle="counter-up">1234</h2>
+                            <p class="text-light mb-0">Total bride</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="border-start border-light ps-4">
+                            <h2 class="text-white mb-1" data-toggle="counter-up">12345</h2>
+                            <p class="text-light mb-0">Total</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
+                <div class="owl-carousel header-carousel">
+                    <div class="owl-carousel-item position-relative">
+                        <img class="img-fluid"
+                            src="https://i.pinimg.com/736x/6a/90/06/6a9006772f31feb30bb7950baebf91a7.jpg" alt=""
+                            style="object-fit: cover;">
+                        <div class="owl-carousel-text">
+                            <h1 class="display-1 text-white mb-0"></h1>
+                        </div>
+                    </div>
+                    <div class="owl-carousel-item position-relative">
+                        <img class="img-fluid"
+                            src="https://i.pinimg.com/736x/bd/b6/a2/bdb6a2f5e5c3ab4e14b40fde7bfa5a49.jpg" alt=""
+                            style="object-fit: cover;">
+                        <div class="owl-carousel-text">
+                            <h1 class="display-1 text-white mb-0"></h1>
+                        </div>
+                    </div>
+                    <div class="owl-carousel-item position-relative">
+                        <img class="img-fluid"
+                            src="https://cfw.rabbitloader.xyz/eyJjIjp0cnVlLCJoIjoibXltYW5kYXAuaW4iLCJ2IjozNTA3MDAwMTg5LCJpIjoiYTc2ZTYzZGEtNzRiMC00NTI1LWViODMtYmE4YWQ3OWE0NzAwIn0/wp-content/uploads/2022/04/Nauvari-Marathi-Wedding-Dress-for-Couple-2.jpg"
+                            alt="" style="object-fit: cover;">
+                        <div class="owl-carousel-text">
+                            <h1 class="display-1 text-white mb-0"></h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Header End -->
+
+
+    <!-- Feature Start -->
+    <div class="container-fluid bg-danger overflow-hidden px-lg-0">
+        <div class="container feature px-lg-0">
+            <div class="row g-0 mx-lg-0 m-0">
+                <div class="col-md-6 pe-lg-0 wow fadeIn" data-wow-delay="0.5s" style="min-height: 400px;">
+                    <div class="position-relative h-100">
+                        <img class="position-absolute img-fluid w-100 h-100" src="/img/features1.jpg"
+                            style="object-fit: cover;" alt="">
+                    </div>
+                </div>
+                <div class="col-md-6 feature-text py-5 wow fadeIn" data-wow-delay="0.1s">
+                    <div class="p-lg-5 ps-lg-0">
+                        <p class="d-inline-block border rounded-pill text-light py-1 px-4">Features</p>
+                        <h1 class="text-white mb-4">Burud Samaj.com-Binding Burud Matrimony</h1>
+                        <p class="text-center fs-1 text-white">---💌---</p>
+                        <p class="text-white mb-4 pb-2"> Burud Bandhan is the most trusted name in Marathi Matrimony.
+                            Our platform caters to all castes within the Marathi community, making it a preferred choice
+                            for those seeking genuine and meaningful relationships.
+
+                            Explore a diverse array of over 10,000+ verified Marathi grooms and brides profiles at Lagna
+                            Tharle. Each profile undergoes rigorous Aadhar and PAN card verification, ensuring
+                            authenticity and reliability.
+
+                            At Burud-bandan, your happiness is our priority. We provide dedicated customer executives to
+                            assist and guide you throughout your journey, ensuring that you have a smooth and delightful
+                            experience.
+
+                        </p>
+                        <div class="row g-4">
+                            <div class="col-6">
+                                <div class="d-flex align-items-center">
+                                    <div class="d-flex flex-shrink-0 align-items-center justify-content-center rounded-circle bg-light"
+                                        style="width: 55px; height: 55px;">
+                                        <i class="fa fa-user-md text-primary"></i>
+                                    </div>
+                                    <div class="ms-4">
+                                        <p class="text-white mb-2">24 Hours</p>
+                                        <h5 class="text-white mb-0">Support</h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="d-flex align-items-center">
+                                    <div class="d-flex flex-shrink-0 align-items-center justify-content-center rounded-circle bg-light"
+                                        style="width: 55px; height: 55px;">
+                                        <i class="fa fa-check text-primary"></i>
+                                    </div>
+                                    <div class="ms-4">
+                                        <p class="text-white mb-2">Quality</p>
+                                        <h5 class="text-white mb-0">Services</h5>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Feature End -->
+
+
+
+    <!-- Service Start -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
+
+                <h1>How It Works</h1>
+                <p class="text-center fs-1">---💌---</p>
+            </div>
+            <div class="row g-4 m-o">
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="service-item bg-light rounded h-100 p-5">
+                        <div class="d-inline-flex align-items-center justify-content-center bg-white rounded-circle mb-4"
+                            style="width: 65px; height: 65px;">
+                            <img src="./img/rigistarion.png" alt="" height="40" width="45">
+                        </div>
+                        <h4 class="mb-3">Register </h4>
+                        <p class="mb-4">Registering on a matrimonial website typically involves creating a profile and
+                            providing information about yourself or the person on whose behalf you are creating the
+                            profile. </p>
+                        <a class="btn" href=""><i class="fa fa-plus text-primary me-3"></i>Read More</a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="service-item bg-light rounded h-100 p-5">
+                        <div class="d-inline-flex align-items-center justify-content-center bg-white rounded-circle mb-4"
+                            style="width: 65px; height: 65px;">
+                            <img src="./img/match.png" alt="" height="40" width="45">
+                        </div>
+                        <h4 class="mb-3">Find Your Match</h4>
+                        <p class="mb-4">"Find Your Match" is a common feature on matrimonial websites that allows users
+                            to search for potential life partners based on specific criteria.</p>
+                        <a class="btn" href=""><i class="fa fa-plus text-primary me-3"></i>Read More</a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                    <div class="service-item bg-light rounded h-100 p-5">
+                        <div class="d-inline-flex align-items-center justify-content-center bg-white rounded-circle mb-4"
+                            style="width: 65px; height: 65px;">
+                            <img src="./img/send interest.png" alt="" height="40" width="30">
+                        </div>
+                        <h4 class="mb-3">Send Interest</h4>
+                        <p class="mb-4">allows users to express their interest in a specific profile, indicating that
+                            they are interested in getting to know the person further</p>
+                        <a class="btn" href=""><i class="fa fa-plus text-primary me-3"></i>Read More</a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="service-item bg-light rounded h-100 p-5">
+                        <div class="d-inline-flex align-items-center justify-content-center bg-white rounded-circle mb-4"
+                            style="width: 65px; height: 65px;">
+                            <img src="./img/getprofiledata.png" alt="" height="40" width="40">
+                        </div>
+                        <h4 class="mb-3">Get Profile Information</h4>
+                        <p class="mb-4">It's important to note that the specific data collected may vary from one
+                            matrimonial website to another, and users should always be cautious about sharing personal
+                            information.</p>
+                        <a class="btn" href=""><i class="fa fa-plus text-primary me-3"></i>Read More</a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="service-item bg-light rounded h-100 p-5">
+                        <div class="d-inline-flex align-items-center justify-content-center bg-white rounded-circle mb-4"
+                            style="width: 65px; height: 65px;">
+                            <img src="./img/meetups.png" alt="" height="40" width="40">
+                        </div>
+                        <h4 class="mb-3">Start Meetups</h4>
+                        <p class="mb-4">
+                            The term "meetups" generally refers to in-person gatherings or events where people with
+                            common interests or goals come together. In the context of matrimonial websites, some
+                            platforms may facilitate or encourage meetups as a way for potential matches to interact in
+                            person.</p>
+                        <a class="btn" href=""><i class="fa fa-plus text-primary me-3"></i>Read More</a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                    <div class="service-item bg-light rounded h-100 p-5">
+                        <div class="d-inline-flex align-items-center justify-content-center bg-white rounded-circle mb-4"
+                            style="width: 65px; height: 65px;">
+                            <i class="fa fa-vials text-primary fs-4"></i>
+                        </div>
+                        <h4 class="mb-3">get married</h4>
+                        <p class="mb-4">Matrimonial websites primarily serve as online platforms for individuals seeking
+                            potential life partners. While the ultimate goal for many users is to find a suitable match
+                            and get married, the websites themselves facilitate the matchmaking process.</p>
+                        <a class="btn" href=""><i class="fa fa-plus text-primary me-3"></i>Read More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Service End -->
+
+
+
+
+
+    <!-- Team Start -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
+
+                <h1>Latest Profile</h1>
+                <p class="text-center fs-1">---💌---</p>
+            </div>
+            <div id="latestProfileContainer" class="row g-4 m-0">
+
+            </div>
+        </div>
+
+    </div>
+    <!-- Team End -->
+
+
+    <!-- Appointment Start -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="row g-5 m-0">
+                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <p class="d-inline-block border rounded-pill py-1 px-4">Appointment</p>
+                    <h1 class="mb-4">Make An Appointment To Visit Our </h1>
+                    <p class="mb-4">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et
+                        eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo magna dolore erat amet
+                    </p>
+                    <div class="bg-light rounded d-flex align-items-center p-5 mb-4">
+                        <div class="d-flex flex-shrink-0 align-items-center justify-content-center rounded-circle bg-white"
+                            style="width: 55px; height: 55px;">
+                            <i class="fa fa-phone-alt text-primary"></i>
+                        </div>
+                        <div class="ms-4">
+                            <p class="mb-2">Call Us Now</p>
+                            <h5 class="mb-0">+012 345 6789</h5>
+                        </div>
+                    </div>
+                    <div class="bg-light rounded d-flex align-items-center p-5">
+                        <div class="d-flex flex-shrink-0 align-items-center justify-content-center rounded-circle bg-white"
+                            style="width: 55px; height: 55px;">
+                            <i class="fa fa-envelope-open text-primary"></i>
+                        </div>
+                        <div class="ms-4">
+                            <p class="mb-2">Mail Us Now</p>
+                            <h5 class="mb-0">info@example.com</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
+                    <div class="bg-light rounded h-100 d-flex align-items-center p-5">
+                        <form>
+                            <div class="row g-3">
+                                <div class="col-12 col-sm-6">
+                                    <input type="text" class="form-control border-0" placeholder="Your Name"
+                                        style="height: 55px;">
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <input type="email" class="form-control border-0" placeholder="Your Email"
+                                        style="height: 55px;">
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <input type="text" class="form-control border-0" placeholder="Your Mobile"
+                                        style="height: 55px;">
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <select class="form-select border-0" style="height: 55px;">
+                                        <option selected>Choose one</option>
+                                        <option value="1">Doctor 1</option>
+                                        <option value="2">Doctor 2</option>
+                                        <option value="3">Doctor 3</option>
+                                    </select>
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <div class="date" id="date" data-target-input="nearest">
+                                        <input type="text" class="form-control border-0 datetimepicker-input"
+                                            placeholder="Choose Date" data-target="#date" data-toggle="datetimepicker"
+                                            style="height: 55px;">
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <div class="time" id="time" data-target-input="nearest">
+                                        <input type="text" class="form-control border-0 datetimepicker-input"
+                                            placeholder="Choose Date" data-target="#time" data-toggle="datetimepicker"
+                                            style="height: 55px;">
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <textarea class="form-control border-0" rows="5"
+                                        placeholder="Describe your problem"></textarea>
+                                </div>
+                                <div class="col-12">
+                                    <button class="btn btn-danger w-100 py-3" type="submit">Book Appointment</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Appointment End -->
+
+
+    <!-- Testimonial Start -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
+                <p class="d-inline-block border rounded-pill py-1 px-4">Testimonial</p>
+                <h1>What Say Our customers!</h1>
+                <p class="text-center fs-1">---💌---</p>
+            </div>
+            <div class="owl-carousel testimonial-carousel wow fadeInUp" data-wow-delay="0.1s">
+                <div class="testimonial-item text-center">
+                    <img class="img-fluid bg-light rounded-circle p-2 mx-auto mb-4" src="img/testimonial-1.jpg"
+                        style="width: 100px; height: 100px;">
+                    <div class="testimonial-text rounded text-center p-4">
+                        <p>Clita clita tempor justo dolor ipsum amet kasd amet duo justo duo duo labore sed sed. Magna
+                            ut diam sit et amet stet eos sed clita erat magna elitr erat sit sit erat at rebum justo sea
+                            clita.</p>
+                        <h5 class="mb-1">Customer Name</h5>
+                        <span class="fst-italic">Profession</span>
+                    </div>
+                </div>
+                <div class="testimonial-item text-center">
+                    <img class="img-fluid bg-light rounded-circle p-2 mx-auto mb-4" src="img/testimonial-2.jpg"
+                        style="width: 100px; height: 100px;">
+                    <div class="testimonial-text rounded text-center p-4">
+                        <p>Clita clita tempor justo dolor ipsum amet kasd amet duo justo duo duo labore sed sed. Magna
+                            ut diam sit et amet stet eos sed clita erat magna elitr erat sit sit erat at rebum justo sea
+                            clita.</p>
+                        <h5 class="mb-1">Customer Name</h5>
+                        <span class="fst-italic">Profession</span>
+                    </div>
+                </div>
+                <div class="testimonial-item text-center">
+                    <img class="img-fluid bg-light rounded-circle p-2 mx-auto mb-4" src="img/testimonial-3.jpg"
+                        style="width: 100px; height: 100px;">
+                    <div class="testimonial-text rounded text-center p-4">
+                        <p>Clita clita tempor justo dolor ipsum amet kasd amet duo justo duo duo labore sed sed. Magna
+                            ut diam sit et amet stet eos sed clita erat magna elitr erat sit sit erat at rebum justo sea
+                            clita.</p>
+                        <h5 class="mb-1">Customer Name</h5>
+                        <span class="fst-italic">Profession</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Testimonial End -->
+
+    <!-- download our applications -->
+    <div class="row m-0 bg-light p-5 ">
+        <div class="col-md-6 wow fadeInUp">
+            <div class="text-center p-2">
+                <img src="https://i.pinimg.com/originals/06/25/07/06250784d4b704ddd0ecafdc5117b585.png" alt=""
+                    height="500" width="500">
+            </div>
+        </div>
+        <div class="col-md-6 p-2 ">
+            <p class="text-center fs-1">---💌---</p>
+            <h1>Download <b>Burud-bandhan.com</b> <br>Matrimony App</h1>
+            <p class="mt-5">All it takes is 30 seconds to Download. fat, Simple & Delightful. All it takes <br> is 30
+                seconds to Download. <br>
+                <img src="./img/playstore.png" alt="" style="height: 300px;">
+            </p>
+
+        </div>
+    </div>
+
+    <!-- download end here -->
+
+    <!--FAQs strat here -->
+    <h1 class="text-center fs-3 mt-5">FAQs</h1>
+    <div class="d-flex justify-content-center">
+        <div class="wrapper ">
+            <div class="container faq wow fadeInUp">
+                <div class="question">
+                    "आकर्षक मंगळसूत्र भेट" हि ऑफर काय आहे?
+                </div>
+                <div class="answercont">
+                    <div class="answer">
+
+                        आमच्या संस्थेतर्फे जी काही लग्न जुळली आहेत किंवा यापुढेही जुळतील अशा प्रत्येक जोडप्यास
+                        लग्नठरलें.कॉम तर्फे आकर्षक "सोन्याचे मंगळसूत्र" भेट म्हणून देण्यात येते<br><br>
+
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="container faq wow fadeInUp">
+                <div class="question">
+                    मराठी कास्ट मधील लग्नासाठी स्थळे शोधण्याकरता सर्वात उत्तम आणि विश्वासू वेबसाइट कोणती आहे?
+                </div>
+                <div class="answercont">
+                    <div class="answer">
+                        तुम्हाला इंटरनेट वर भरपूर पर्याय उपलब्ध आहेत. पण, Burud-bandan हि महाराष्ट्राची एक उत्तम व
+                        विश्वासू विवाह संस्था आहे. या संस्थेमध्ये १०,००० पेक्षा अधिक प्रोफाईल्स उपलब्ध असून या विवाह
+                        संस्थेद्वारे भरपूर लग्न जुळली आहेत.<br><br>
+
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="container faq wow fadeInUp " data-wow-delay="0.1s">
+                <div class="question">
+                    आपल्या येथे सर्वजातीय मराठी स्थळे उपलब्ध आहेत का?
+                </div>
+                <div class="answercont">
+                    <div class="answer">
+
+                        हो. आमच्या येथे सर्वजातीय मराठी स्थळे उपलब्ध आहेत.<br><br>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container faq wow fadeInUp " data-wow-delay="0.2s">
+                <div class="question">
+                    burud-bandhen वेबसाइट/अँप चा वापर कसा करावा?
+                </div>
+                <div class="answercont">
+                    <div class="answer">
+
+                        लग्नठरले.कॉम वेबसाइट वापरण्यासाठी अथवा नावनोंदणी करण्यासाठी आपण www.lagnatharle.com या
+                        संकेतस्थळावर (वेबसाइट वर) जाऊन भेट देऊ शकता. तसेच Googel Play Store वर जाऊन आमचा अँड्रॉइड अँप
+                        सुद्धा इन्स्टॉल करू शकता.
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="container faq wow fadeInUp " data-wow-delay="0.3s">
+                <div class="question">
+                    प्रोफाईल्स शोधण्याकरता "Simple Search Form" चा वापर कसा करावा?
+                </div>
+                <div class="answercont">
+                    <div class="answer">
+
+                        वेबसाइट अथवा अँप वर तुम्हाला "Search" मेनू मध्ये "Simple Search Form" हा पर्याय दिसेल. त्यावर
+                        क्लिक करून तेथे दिलेल्या फॉर्म च्या आधारे तुम्ही आपल्या पसंती प्रमाणे प्रोफाईल्स पाहू
+                        शकता.<br><br>
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="container faq wow fadeInUp " data-wow-delay="0.4s">
+                <div class="question">
+                    burud-bandhen वर नावनोंदणी कशी करावी?
+                </div>
+                <div class="answercont">
+                    <div class="answer">
+
+                        लग्नठरले.कॉम वेबसाइट अथवा अँप वर गेल्यावर तुम्हाला "Register" चा पर्याय दिसेल. वेबसाइट वर हा
+                        पर्याय उजव्या बाजूस वरील कोपऱ्यात उपलब्ध आहे. तर अँप वर तुम्हाला हा पर्याय तुम्हाला स्क्रीन खाली
+                        पाहता येईल. हा पर्याय निवडल्यास तुमच्या समोर एक फॉर्म ओपन होईल. त्या फॉर्म मध्ये विचारलेली
+                        संपूर्ण माहिती भरून, आपला मोबाइल नंबर प्रविष्ट करून "Generate OTP" वर क्लिक करावे. तुम्ही
+                        प्रविष्ट केलेल्या मोबाइल नंबर वर OTP आल्यानंतर सदर OTP "Enter OTP" या बॉक्स मध्ये नमूद करून
+                        "Verify OTP" वर क्लिक करावे व नंतर "SUBMIT" बटण क्लिक करावे. अशाप्रकारे तुम्ही तुमचे
+                        रेजिस्ट्रेशन / नाव नोंदणी सहजरित्या करू शकता.<br><br>
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="container faq wow fadeInUp " data-wow-delay="0.5s">
+                <div class="question">
+                    ऍडमिनच्या अनुमतीशिवाय किंवा केवळ नावनोंदणी केल्यावर माझी प्रोफाइल सर्वासाठी खुली अथवा उपलब्ध होते
+                    का?
+                </div>
+                <div class="answercont">
+                    <div class="answer">
+
+                        नाही. आमच्या वेबसाइट वर केवळ नावनोंदणी मोफत आहे. परंतु तुम्हाला तुमची प्रोफाइल सर्व युजर साठी
+                        उपलब्ध करायची असल्यास किंवा आमच्या वेबसाइटवर रजिस्टर असलेले इतर सदस्यांचे कॉन्टॅक्ट नंबर्स हवे
+                        असल्यास तुम्हाला आमची मेम्बरशिप प्लान घेणे अनिवार्य आहे.
+                        <br><br>
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="container faq wow fadeInUp " data-wow-delay="0.6s">
+                <div class="question">
+                    मोबाईल नंबर पाहण्याच्या संख्येत काही मर्यादा आहेत का?
+                </div>
+                <div class="answercont">
+                    <div class="answer">
+
+                        हो. वेगवेगळ्या मेम्बरशिप प्लान मध्ये तुम्हाला प्लान नुसार मर्यादा राहतील. ३ महिन्यांच्या प्लान
+                        मध्ये तुम्ही ९० मोबाइल नंबर्स, ६ महिन्याच्या प्लान मध्ये २०० तर १ वर्षाच्या प्लान मध्ये तुम्ही
+                        ४५० यूजर्स चे मोबाइल क्रमांक पाहू शकता.
+
+                        <br><br>
+
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+
+    <!-- FAQs end here -->
+
+    <div class="text-center">
+        <img src="https://cdn.pixabay.com/animation/2023/11/10/09/19/09-19-08-544_512.gif" alt="" height="300">
+    </div>
+
+
+    <!-- Footer Start -->
+    <footer class="footer bg-danger">
+        <div class="container">
+            <div class="row m-0">
+
+
+                <div class="col-md-3">
+                    <div class="widget3">
+                        <h5>
+                            Quick Links
+                        </h5>
+                        <ul>
+                            <li>
+                                <a href="#" class="text-decoration-none word-hover">
+                                    Home
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="text-decoration-none word-hover">
+                                    about
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="text-decoration-none word-hover">
+                                    contact
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="text-decoration-none word-hover">
+                                    Profile
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="text-decoration-none word-hover">
+                                    Resources
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="text-decoration-none word-hover">
+                                    login
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="widget4">
+                        <h5>
+                            Other Links
+                        </h5>
+                        <ul>
+                            <li>
+                                <a href="#" class="text-decoration-none word-hover">
+                                    Simple search
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="text-decoration-none word-hover">
+                                    Advance search
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="text-decoration-none word-hover">
+                                    Success stories
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="text-decoration-none word-hover">
+                                    Success vidios
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="text-decoration-none word-hover">
+                                    Grooms
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="text-decoration-none word-hover">
+                                    Bride
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-6 ">
+                    <div class="widget1">
+                        <div class="logo">
+                            <h2 style="font-family:fantasy;"><span class="text-warning"
+                                    style="text-decoration:underline;">BURUD</span>BANDHAN</h2>
+                        </div>
+                        <p>
+                            In eu libero ligula. Fusce eget metus lorem, ac viverra
+                            leo. Nullam convallis, arcu vel pellentesque sodales,
+                            nisi est varius diam, ac ultrices sem ante quis sem.
+                            Proin ultricies volutpat sapien.
+                        </p>
+                        <div class="socialLinks">
+                            <ul>
+                                <li>
+                                    <a href="#" class="text-decoration-none word-hover">
+                                        <i class="fab fa-facebook-f"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="text-decoration-none word-hover">
+                                        <i class="fab fa-twitter"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="text-decoration-none word-hover">
+                                        <i class="fab fa-linkedin-in"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="text-decoration-none word-hover">
+                                        <i class="fab fa-google-plus-g"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="copyRightArea">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <p>© Copyright Burud-bhanden.com. Designed by @Increditex software solutions pvt ltd. All right
+                            reserved</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Footer End -->
+
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square rounded-circle back-to-top"><i
+            class="bi bi-arrow-up"></i></a>
+
+    <div class="modal fade" id="basicInfoAddModal">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h6 class="text-dark">Add Personal Information</h6>
+                    <button type="button" class="close" data-bs-dismiss="modal">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form class="row g-4" id="basicInfo-form">
+
+
+                        <div class="col-md-4">
+                            <label for="">Create Profile for</label>
+                            <select class="form-control" id="profilefor" name="profilefor" required>
+                                <option disabled selected value="">Select</option>
+                                <option value="Groom">Groom</option>
+                                <option value="Bride">Bride</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="full-name">Full Name</label>
+                            <input class="form-control" type="text" id="fullname" name="fullname" required>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="full-name">Birth Name</label>
+                            <input class="form-control" type="text" id="birthname" name="birthname" required>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="birth-place">Birth Place(जन्म ठिकाण )</label>
+                            <input class="form-control" type="text" id="birthplace" name="birthplace" required>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="dob">Date of Birth(जन्म तारीख)</label>
+                            <input type="date" class="form-control" id="dob" name="dateofbirth" required>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="tob">Time of Birth(जन्म वेळ)</label>
+                            <input type="time" class="form-control" id="tob" name="timeofbirth" required>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="city">City</label>
+                            <select class="form-control" id="city" name="city" required>
+                                <option disabled selected value="">Select</option>
+                                <option value="Nashik">Nashik</option>
+                                <option value="Pune">Pune</option>
+                                <option value="Jalgaon">Jalgaon</option>
+                                <option value="Kolhapur">Kolhapur</option>
+                                <option value="Sambhajinanagr">Sambhajinanagr</option>
+                                <option value="Chalisgaon">Chalisgaon</option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-4">
+                            <label for="education">Education</label>
+                            <select class="form-control" id="education" name="education" required>
+                                <option disabled selected value="">Select</option>
+                                <option value="Diploma">Diploma</option>
+                                <option value="Master Degree">Master Degree</option>
+                                <option value="Graduation">Graduation</option>
+                                <option value="12Th">12Th</option>
+                                <option value="10Th">10Th</option>
+                                <option value="Chalisgaon">Engineering</option>
+
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="income">Annual Income(वार्षिक उत्पन्न )</label>
+                            <input type="number" class="form-control" id="income" name="income" placeholder="per annum"
+                                required>
+                        </div>
+
+                        <div class="col-md-4">
+                            <label for="blood-group">Blood Group</label>
+                            <select class="form-control" id="bloodgroup" name="bloodgroup" required>
+                                <option disabled selected value="">Select</option>
+                                <option value="A positive (A+)">A positive (A+)</option>
+                                <option value="A negative (A-)">A negative (A-)</option>
+                                <option value="B positive (B+)">B positive (B+)</option>
+                                <option value="B negative (B-)">B negative (B-)</option>
+                                <option value="AB positive (AB+)">AB positive (AB+)</option>
+                                <option value="AB negative (AB-)">AB negative (AB-)</option>
+                                <option value="O positive (O+)">O positive (O+)</option>
+                                <option value="O positive (O+)">O negative (O-)</option>
+
+                            </select>
+                        </div>
+
+                        <div class="col-md-4">
+                            <label for="spectacles">Spectacles (चष्मा )</label>
+                            <select class="form-control" id="spectacles" name="spectacles" required>
+                                <option disabled selected value="">Select</option>
+                                <option value="yes">Yes</option>
+                                <option value="no">No</option>
+                            </select>
+                        </div>
+
+
+
+
+                        <div class="col-md-4">
+                            <label for="occupation">Occupation(व्यवसाय/नोकरी )</label>
+                            <input class="form-control" type="text" id="occupation" name="occupation" required>
+                        </div>
+
+                        <div class="col-md-4">
+                            <label for="marital-status">Marital Status</label>
+                            <select class="form-control" id="maritalstatus" name="maritalstatus" required>
+                                <option disabled selected value="">Select</option>
+                                <option value="single">Single</option>
+                                <option value="divorced">Divorced</option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-4">
+                            <label for="height">Height in cm (उंची सेंटी)</label>
+                            <input class="form-control" type="number" id="height" name="height" required>
+                        </div>
+
+                        <div class="col-md-4">
+                            <label for="occupation-city">Occupation City(व्यवसाय शहर )</label>
+                            <input class="form-control" type="text" id="occupationcity" name="occupationcity" required>
+                        </div>
+
+                        <div class="col-md-4">
+                            <label for="complexion">Complexion(वर्ण)</label>
+                            <input class="form-control" type="text" id="complexion" name="complexion" required>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="complexion">Disabled(अपंग )</label>
+                            <select class="form-control" id="disabled" name="disabled" required>
+                                <option disabled selected value="">Select</option>
+                                <option value="yes">yes</option>
+                                <option value="no">no</option>
+                            </select>
+                        </div>
+                        <div class="col-md-12">
+                            <label for="complexion">Address(पत्ता )</label>
+                            <textarea class="form-control" id="address" name="address"></textarea>
+                        </div>
+
+
+
+                        <div class="row border-top">
+                            <h6 class="text-dark p-3">Your contact details</h6>
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label for="age-difference"> Email id </label>
+                                        <input class="form-control" type="email" id="email" name="email" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="age-difference">Mobile number</label>
+                                        <input class="form-control" type="number" id="mobile" name="mobile" required>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" data-bs-dismiss="modal">close</button>
+                    <button class="btn btn-primary" type="submit"
+                        onclick="captureBasicDetails(); addFamilyBackground();" id="proceedToSecondModal"
+                        disabled>next</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="familyinfoAddModal">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h6 class="text-dark">Add Family Information</h6>
+                    <button type="button" class="close" data-bs-dismiss="modal">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="" method="" class="row" id="familyInfo-form" enctype="multipart/form-data">
+                        <div class="col-md-12">
+                            <div class="row my-4">
+
+                                <input type="hidden" name="profilefor" id="profileforinput" value="">
+                                <input type="hidden" name="fullname" id="fullnameinput" value="">
+                                <input type="hidden" name="birthname" id="birthnameinput" value="">
+                                <input type="hidden" name="birthplace" id="birthplaceinput" value="">
+                                <input type="hidden" name="city" id="cityinput" value="">
+                                <input type="hidden" name="dob" id="dobinput" value="">
+                                <input type="hidden" name="tob" id="tobinput" value="">
+                                <input type="hidden" name="income" id="incomeinput" value="">
+                                <input type="hidden" name="education" id="educationinput" value="">
+                                <input type="hidden" name="bloodgroup" id="bloodgroupinput" value="">
+                                <input type="hidden" name="spectacles" id="spectaclesinput" value="">
+                                <input type="hidden" name="occupation" id="occupationinput" value="">
+                                <input type="hidden" name="complexion" id="complexioninput" value="">
+                                <input type="hidden" name="maritalstatus" id="maritalstatusinput" value="">
+                                <input type="hidden" name="height" id="heightinput" value="">
+                                <input type="hidden" name="occupationcity" id="occupationcityinput" value="">
+                                <input type="hidden" name="disabled" id="disabledinput" value="">
+                                <input type="hidden" name="address" id="addressinput" value="">
+                                <input type="hidden" name="email" id="emailinput" value="">
+                                <input type="hidden" name="mobile" id="mobileinput" value="">
+
+                                <div class="col-md-4">
+                                    <label for="father-name">Father's full Name</label>
+                                    <input class="form-control" type="text" id="fathername" name="fathername" required>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <label for="mother-name">Mother's maher full Name</label>
+                                    <input class="form-control" type="text" id="mothername" name="mothername" required>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="mother-name">Father occupation</label>
+                                    <input class="form-control" type="text" id="fatheroccupation"
+                                        name="fatheroccupation" required>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="mother-name">Mother occupation</label>
+                                    <input class="form-control" type="text" id="motheroccupation"
+                                        name="motheroccupation" required>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="mother-name">Hudda</label>
+                                    <input class="form-control" type="text" id="hudda" name="hudda" required>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <label for="maternal-uncle">Maternal Uncle(मामकूल )</label>
+                                    <input class="form-control" type="text" id="maternaluncle" name="maternaluncle"
+                                        required>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="mother-name">Family members</label>
+                                    <input class="form-control" type="number" id="familymembers" name="familymembers"
+                                        required>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="mother-name">Parents Address</label>
+                                    <textarea name="parentaddress" id="parentaddress" class="form-control"></textarea>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="mother-name">Profile Visibility</label>
+                                    <select name="profilevisibility" class="form-control" id="profilevisibility">
+                                        <option selected disabled value="">Select</option>
+                                        <option  value="private">Private</option>
+                                        <option  value="public">Public</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="row border-top">
+                                <h6 class="text-dark p-3">Add Expectations</h6>
+                                <div class="col-md-12">
+                                    <label for="">Expectations</label>
+                                    <textarea name="expectation" id="expectation" class="form-control"></textarea>
+                                    <!-- <div class="row">
+                                                <div class="col-md-4">
+                                                    <label for="age-difference">Age Difference Upto:(In Year) </label>
+                                                    <input class="form-control" type="text" id="agedifference"
+                                                        name="agedifference" required>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <label for="preferred-city">Preferred City:</label>
+                                                    <select class="form-control" id="preferredcity" name="preferredcity"
+                                                        required>
+                                                        <option disabled selected value="">Select</option>
+                                                        <option value="Nashik">Nashik</option>
+                                                        <option value="Pune">Pune</option>
+                                                        <option value="Jalgaon">Jalgaon</option>
+                                                        <option value="Kolhapur">Kolhapur</option>
+                                                        <option value="Sambhajinanagr">Sambhajinanagr</option>
+                                                        <option value="Chalisgaon">Chalisgaon</option>
+        
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <label for="expected-height">Expected Height:</label>
+                                                    <input class="form-control" type="number" id="expectedheight"
+                                                        name="expectedheight" required>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <label for="education-dropdown">Education:</label>
+                                                    <select class="form-control" id="herhiseducation" name="herhiseducation"
+                                                        required>
+                                                        <option disabled selected value="">Select</option>
+                                                        <option value="Diploma">Diploma</option>
+                                                        <option value="Master Degree">Master Degree</option>
+                                                        <option value="Graduation">Graduation</option>
+                                                        <option value="12Th">12Th</option>
+                                                        <option value="10Th">10Th</option>
+                                                        <option value="Chalisgaon">Engineering</option>
+        
+                                                    </select>
+                                                </div>
+                                            
+                                                
+                                            </div> -->
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" data-bs-dismiss="modal">close</button>
+                    <button class="btn btn-danger" type="submit" onclick="submitFormData();">submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/counterup/counterup.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="lib/tempusdominus/js/moment.min.js"></script>
+    <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
+    <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+    <script src="js/home.js"></script>
+
+    <script src="js/faq.js"></script>
+    <script src="https://storage.ko-fi.com/cdn/scripts/overlay-widget.js"></script>
+
+    <script>
+        async function addProfile() {
+            try {
+                await $.ajax({
+                    type: 'GET',
+                    url: '/checkprofile', // Endpoint to check user profile existence
+                    success: async function (response) {
+                        if (response.message === 'User Profile Found') {
+                            $('#basicInfoAddModal').modal('hide');
+                            console.log("send request");
+
+                            // Add AJAX request to send friend request
+                            await $.ajax({
+                                type: 'PUT',
+                                url: '/sendRequest', // Endpoint to send friend request
+                                success: function (response) {
+                                    console.log('Friend request sent successfully');
+                                },
+                                error: function (xhr, status, error) {
+                                    console.error('Error sending friend request:', error);
+                                }
+                            });
+                        } else {
+                            $('#basicInfo-form').trigger('reset');
+                            $('#basicInfoAddModal').modal('show');
+                        }
+                    },
+                    error: function (xhr, status, error) {
+                        console.error(error);
+                    }
+                });
+            } catch (error) {
+                console.error('Error adding profile:', error);
+            }
+        }
+
+        function captureBasicDetails() {
+
+            const profilefor = document.getElementById('profilefor').value;
+            //  basicDetails['profilefor']=profilefor
+            const fullname = document.getElementById('fullname').value;
+            const birthname = document.getElementById('birthname').value;
+            const birthplace = document.getElementById('birthplace').value;
+            const disabled = document.getElementById('disabled').value;
+            const address = document.getElementById('address').value;
+            //  basicDetails['fullname']=fullname
+            const city = document.getElementById('city').value;
+            //  basicDetails['city']=city
+            const dob = document.getElementById('dob').value;
+            const tob = document.getElementById('tob').value;
+            //  basicDetails['dob']=dob
+            const income = document.getElementById('income').value;
+            //  basicDetails['income']=income
+            const education = document.getElementById('education').value;
+            //  basicDetails['education']=education
+            const bloodgroup = document.getElementById('bloodgroup').value;
+            //  basicDetails['bloodgroup']=bloodgroup
+            const spectacles = document.getElementById('spectacles').value;
+            //  basicDetails['spectacles']=spectacles
+
+            //  basicDetails['gotradevak']=gotradevak
+
+            //  basicDetails['birthplace']=birthplace
+            const occupation = document.getElementById('occupation').value;
+            //  basicDetails['occupation']=occupation
+            const maritalstatus = document.getElementById('maritalstatus').value;
+            //  basicDetails['maritalstatus']=maritalstatus
+            const height = document.getElementById('height').value;
+            //  basicDetails['height']=height
+            const occupationcity = document.getElementById('occupationcity').value;
+            //  basicDetails['occupationcity']=occupationcity
+            const complexion = document.getElementById('complexion').value;
+            //  basicDetails['complexion']=complexion
+
+            //  basicDetails['mangal']=mangal
+
+            //  basicDetails['horoimage']=horoimage
+
+            const email = document.getElementById('email').value;
+            const mobile = document.getElementById('mobile').value;
+            //  basicDetails['residentcity']=residentcity
+
+            document.getElementById("profileforinput").value = profilefor;
+            document.getElementById("fullnameinput").value = fullname;
+            document.getElementById("birthnameinput").value = birthname;
+            document.getElementById("birthplaceinput").value = birthplace;
+            document.getElementById("cityinput").value = city;
+            document.getElementById("dobinput").value = dob;
+            document.getElementById("tobinput").value = tob;
+            document.getElementById("disabledinput").value = disabled;
+            document.getElementById("addressinput").value = address;
+            document.getElementById("incomeinput").value = income;
+            document.getElementById("educationinput").value = education;
+            document.getElementById("bloodgroupinput").value = bloodgroup;
+            document.getElementById("spectaclesinput").value = spectacles;
+            document.getElementById("birthplaceinput").value = birthplace;
+            document.getElementById("occupationinput").value = occupation;
+            document.getElementById("complexioninput").value = complexion;
+            document.getElementById("maritalstatusinput").value = maritalstatus;
+            document.getElementById("heightinput").value = height;
+            document.getElementById("occupationcityinput").value = occupationcity;
+            document.getElementById("emailinput").value = email;
+            document.getElementById("mobileinput").value = mobile;
+        }
+
+        // Function to update the Next button state
+        function updateNextbuttonstate() {
+
+            const profilefor = $('#profilefor').val();
+            const fullname = $('#fullname').val();
+            const birthname = $('#birthname').val();
+            const birthplace = $('#birthplace').val();
+            const city = $('#city').val();
+            const dob = $('#dob').val();
+            const tob = $('#tob').val();
+            const disabled = $('#disabled').val();
+            const address = $('#address').val();
+            const income = $('#income').val();
+            const education = $('#education').val();
+            const bloodgroup = $('#bloodgroup').val();
+            const spectacles = $('#spectacles').val();
+            const occupation = $('#occupation').val();
+            const maritalstatus = $('#maritalstatus').val();
+            const height = $('#height').val();
+            const occupationcity = $('#occupationcity').val();
+            const complexion = $('#complexion').val();
+
+            const email = $('#email').val();
+            const mobile = $('#mobile').val();
+
+
+            if (
+                profilefor &&
+                fullname &&
+                birthname &&
+                birthplace &&
+                city &&
+                dob &&
+                tob &&
+                disabled &&
+                address &&
+                income &&
+                education &&
+                bloodgroup &&
+                spectacles &&
+                birthplace &&
+                occupation &&
+                maritalstatus &&
+                height &&
+                occupationcity &&
+                complexion &&
+                email &&
+                mobile
+            ) {
+                $('#proceedToSecondModal').prop('disabled', false);
+            } else {
+                $('#proceedToSecondModal').prop('disabled', true);
+            }
+        }
+
+
+        $('#basicInfoAddModal').on('show.bs.modal', function () {
+            $('#proceedToSecondModal').prop('disabled', true);
+        });
+
+
+        $('#basicInfo-form input, #basicInfo-form select').on('input change', function () {
+            updateNextbuttonstate();
+        });
+
+
+        function addFamilyBackground() {
+            $('#familyInfo-form').trigger('reset');
+            $('#familyinfoAddModal').modal('show');
+        }
+
+        function submitFormData() {
+
+            const basicInfo = {
+                profilefor: document.getElementById('profileforinput').value,
+                fullname: document.getElementById('fullnameinput').value,
+                birthname: document.getElementById('birthnameinput').value,
+                birthplace: document.getElementById("birthplaceinput").value,
+                city: document.getElementById("cityinput").value,
+                dateofbirth: document.getElementById("dobinput").value,
+                timeofbirth: document.getElementById("tobinput").value,
+                disabled: document.getElementById("disabledinput").value,
+                address: document.getElementById("addressinput").value,
+                income: document.getElementById("incomeinput").value,
+                education: document.getElementById("educationinput").value,
+                bloodgroup: document.getElementById("bloodgroupinput").value,
+                spectacles: document.getElementById("spectaclesinput").value,
+                occupation: document.getElementById("occupationinput").value,
+                complexion: document.getElementById("complexioninput").value,
+                maritalstatus: document.getElementById("maritalstatusinput").value,
+                height: document.getElementById("heightinput").value,
+                occupationcity: document.getElementById("occupationcityinput").value,
+                email: document.getElementById("emailinput").value,
+                mobile: document.getElementById("mobileinput").value,
+            };
+
+            // Gather data from the second modal
+            const familyInfo = {
+                fathername: document.getElementById('fathername').value,
+                mothername: document.getElementById('mothername').value,
+                maternaluncle: document.getElementById('maternaluncle').value,
+                parentaddress: document.getElementById('parentaddress').value,
+                familymembers: document.getElementById('familymembers').value,
+                hudda: document.getElementById('hudda').value,
+                fatheroccupation: document.getElementById('fatheroccupation').value,
+                motheroccupation: document.getElementById('motheroccupation').value,
+                profilevisibility:document.getElementById("profilevisibility").value,
+                expectation: document.getElementById('expectation').value,
+                // agedifference: document.getElementById('agedifference').value,
+                // preferredcity: document.getElementById('preferredcity').value,
+                // expectedheight: document.getElementById('expectedheight').value,
+                // herhiseducation: document.getElementById('herhiseducation').value,
+                // Add other fields as needed
+            };
+            // Combine data from both modals
+            const formData = { ...basicInfo, ...familyInfo };
+
+            // Send data to the server using AJAX
+            $.ajax({
+                type: 'POST',
+                url: '/addprofile', // Update the URL with your server endpoint
+                data: formData,
+                success: function (response) {
+                    // Handle success response
+                    console.log(response);
+                    $('#basicInfoAddModal').modal('hide');
+                    $('#familyinfoAddModal').modal('hide');
+                    $('.toast').toast('show');
+                    window.location.href = '/uploadphoto';
+                },
+                error: function (xhr, status, error) {
+                    // Handle error
+                    console.error(error);
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>burud samaj vadhu-var suchak samiti</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500&family=Roboto:wght@500;700;900&display=swap"
+        rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+
+
+    <!-- bs4 links here -->
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
+
+
+    <!-- font icon links -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+        integrity="sha384-GLhlTQ8iN17SmeVH6qyuqF7rTlM6HAPB4l+K5cI8PTq5FfF5s2r0dAizPj7b" crossorigin="anonymous">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/about.css" rel="stylesheet">
+    <style>
+        .box {
+            height: 100%;
+            border: 0.5px solid #b8b6b6;
+            padding: 25px;
+            border-radius: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Spinner Start -->
+
+    <!-- Spinner End -->
+
+
+    <!-- Navbar Start -->
+
+
+    <!-- Navbar End -->
+    <!-- header strt here -->
+
+    <section class="mt-3">
+        <div class="container">
+            <h4 class="text-dark text-center mb-5">Edit profile</h4>
+            <div class="box shadow">
+                <div class="">
+                    <form class="row g-4" id="profileForm">
+
+                        <div class="col-md-12">
+                            <label for="mother-name">Profile Visibility</label>
+                            <select name="profilevisibility" class="form-control" id="profilevisibility" disabled>
+                                <option selected disabled value="<%= userprofile.profilevisibility%>">Status <%= userprofile.profilevisibility%></option>
+                                <option  value="private">Private</option>
+                                <option  value="public">Public</option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-4">
+                            <label for="">Create Profile for</label>
+                            <select disabled class="form-control" id="profilefor" name="profilefor" required>
+                                <option disabled selected value="<%= userprofile.profilefor%>">
+                                    <%= userprofile.profilefor%>
+                                </option>
+                                <option value="Groom">Groom</option>
+                                <option value="Bride">Bride</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="fullname">Full Name</label>
+                            <input disabled class="form-control" type="text" id="fullname" name="fullname"
+                                value="<%= userprofile.fullname%>" required>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="full-name">Birth Name</label>
+                            <input disabled class="form-control" type="text" id="birthname" name="birthname"
+                                value="<%= userprofile.birthname%>" required>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="city">City</label>
+                            <select disabled class="form-control" id="city" name="city" required>
+                                <option disabled selected value="<%= userprofile.city%>">
+                                    <%= userprofile.city%>
+                                </option>
+                                <option value="Nashik">Nashik</option>
+                                <option value="Pune">Pune</option>
+                                <option value="Jalgaon">Jalgaon</option>
+                                <option value="Kolhapur">Kolhapur</option>
+                                <option value="Sambhajinanagr">Sambhajinanagr</option>
+                                <option value="Chalisgaon">Chalisgaon</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="dob">Date of Birth(जन्म तारीख)</label>
+                            <% const dob=new Date(userprofile.dateofbirth); %>
+                                <input disabled type="date" class="form-control" id="dob" name="dateofbirth"
+                                    value="<%= dob.toLocaleDateString('en-CA') %>" required>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="dob">Time of Birth(जन्म वेळ )</label>
+                            <input disabled type="time" value="<%= userprofile.timeofbirth%>" class="form-control"
+                                id="tob" name="timeofbirth" required>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="education">Education</label>
+                            <select disabled class="form-control" id="education" name="education" required>
+                                <option disabled selected value="<%= userprofile.education%>">
+                                    <%= userprofile.education%>
+                                </option>
+                                <option value="Diploma">Diploma</option>
+                                <option value="Master Degree">Master Degree</option>
+                                <option value="Graduation">Graduation</option>
+                                <option value="12Th">12Th</option>
+                                <option value="10Th">10Th</option>
+                                <option value="Chalisgaon">Engineering</option>
+
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="income">Annual Income(वार्षिक उत्पन्न )</label>
+                            <input disabled type="number" value="<%= userprofile.income%>" class="form-control"
+                                id="income" name="income" placeholder="per annum" required>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="income">Hudda(हुद्दा )</label>
+                            <input disabled type="text" value="<%= userprofile.hudda%>" class="form-control" id="hudda"
+                                name="hudda" required>
+                        </div>
+
+                        <div class="col-md-4">
+                            <label for="blood-group">Blood Group</label>
+                            <select disabled class="form-control" id="bloodgroup" name="bloodgroup" required>
+                                <option disabled selected value="<%= userprofile.bloodgroup%>">
+                                    <%= userprofile.bloodgroup%>
+                                </option>
+                                <option value="A positive (A+)">A positive (A+)</option>
+                                <option value="A negative (A-)">A negative (A-)</option>
+                                <option value="B positive (B+)">B positive (B+)</option>
+                                <option value="B negative (B-)">B negative (B-)</option>
+                                <option value="AB positive (AB+)">AB positive (AB+)</option>
+                                <option value="AB negative (AB-)">AB negative (AB-)</option>
+                                <option value="O positive (O+)">O positive (O+)</option>
+                                <option value="O positive (O+)">O negative (O-)</option>
+
+                            </select>
+                        </div>
+
+                        <div class="col-md-4">
+                            <label for="spectacles">Spectacles (चष्मा )</label>
+                            <select disabled class="form-control" id="spectacles" name="spectacles" required>
+                                <option disabled selected value="<%= userprofile.spectacles%>">
+                                    <%= userprofile.spectacles%>
+                                </option>
+                                <option value="yes">Yes</option>
+                                <option value="no">No</option>
+                            </select>
+                        </div>
+
+
+
+                        <div class="col-md-4">
+                            <label for="birth-place">Birth Place(जन्म ठिकाण )</label>
+                            <input disabled class="form-control" type="text" id="birthplace" name="birthplace"
+                                value="<%= userprofile.birthplace%>" required>
+                        </div>
+
+                        <div class="col-md-4">
+                            <label for="occupation">Occupation(व्यवसाय/नोकरी )</label>
+                            <input disabled class="form-control" value="<%= userprofile.occupation%>" type="text"
+                                id="occupation" name="occupation" required>
+                        </div>
+
+                        <div class="col-md-4">
+                            <label for="marital-status">Marital Status</label>
+                            <select disabled class="form-control" id="maritalstatus" name="maritalstatus" required>
+                                <option disabled selected value="<%= userprofile.maritalstatus%>">
+                                    <%= userprofile.maritalstatus%>
+                                </option>
+                                <option value="single">Single</option>
+                                <option value="divorced">Divorced</option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-4">
+                            <label for="height">Height in cm (उंची सेंटी)</label>
+                            <input disabled class="form-control" type="number" value="<%= userprofile.height%>"
+                                id="height" name="height" required>
+                        </div>
+
+                        <div class="col-md-4">
+                            <label for="occupation-city">Occupation City(व्यवसाय शहर )</label>
+                            <input disabled class="form-control" type="text" id="occupationcity" name="occupationcity"
+                                value="<%= userprofile.occupationcity%>" required>
+                        </div>
+
+                        <div class="col-md-4">
+                            <label for="complexion">Complexion(वर्ण)</label>
+                            <input disabled class="form-control" type="text" value="<%= userprofile.complexion%>"
+                                id="complexion" name="complexion" required>
+                        </div>
+
+                        <div class="col-md-12">
+                            <label for="">Address</label>
+                            <textarea disabled name="address" class="form-control"
+                                rows="3"><%= userprofile.address%></textarea>
+                        </div>
+                        <div class="row mt-3">
+
+                            <div class="col-md-12 mb-4">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label for="age-difference"> Email id </label>
+                                        <input disabled class="form-control" type="email" id="email" name="email"
+                                            value="<%= userprofile.email%>" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="age-difference">Mobile number</label>
+                                        <input disabled class="form-control" value="<%= userprofile.mobile%>"
+                                            type="number" id="mobile" name="mobile" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <h6 class="text-dark">Family Information</h6>
+                                <div class="row py-4 border-top">
+                                    <div class="col-md-4">
+                                        <label for="father-name">Father's full Name</label>
+                                        <input disabled value="<%= userprofile.fathername%>" class="form-control"
+                                            type="text" id="fathername" name="fathername" required>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <label for="mother-name">Mother's maher full Name</label>
+                                        <input disabled class="form-control" type="text"
+                                            value="<%= userprofile.mothername%>" id="mothername" name="mothername"
+                                            required>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="mother-name">Father's occupation</label>
+                                        <input disabled class="form-control" type="text"
+                                            value="<%= userprofile.fatheroccupation%>" id="fatheroccupation"
+                                            name="fatheroccupation" required>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="mother-name">Mother's occupation</label>
+                                        <input disabled class="form-control" type="text"
+                                            value="<%= userprofile.motheroccupation%>" id="motheroccupation"
+                                            name="motheroccupation" required>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <label for="maternal-uncle">Maternal Uncle(मामकूल )</label>
+                                        <input disabled class="form-control" type="text" id="maternaluncle"
+                                            name="maternaluncle" value="<%= userprofile.maternaluncle%>" required>
+                                    </div>
+
+                                    <div class="col-md-12">
+                                        <label for="maternal-uncle">Parents Address</label>
+                                        <textarea disabled name="parentaddress" class="form-control"
+                                            rows="3"><%= userprofile.parentaddress%></textarea>
+                                    </div>
+
+
+
+                                </div>
+
+                                <div class="row border-top">
+                                    <h6 class="text-dark p-3">Expectations</h6>
+                                    <div class="col-md-12">
+                                        <label for="maternal-uncle">Expectations</label>
+                                        <textarea disabled name="expectation" class="form-control"
+                                            rows="3"><%= userprofile.expectation%></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-4 position-sticky bg-white w-100" style="bottom: 0px;">
+                            <div class="border-top d-flex justify-content-between">
+                                <div>
+                                    <a href="/" class="btn btn-lg btn-primary mt-4">Back</a>
+                                </div>
+                                <div>
+                                    <button id="editBtn" class="btn btn-lg btn-secondary mt-4">Edit</button>
+                                    <button id="saveBtn" class="btn btn-lg btn-dark mt-4 ms-3"
+                                        style="display: none;">Save</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- Footer Start -->
+
+    <!-- Footer End -->
+
+
+    <!-- Back to Top -->
+
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/counterup/counterup.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="lib/tempusdominus/js/moment.min.js"></script>
+    <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
+    <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+    <!-- <script src="js/about.js"></script> -->
+
+
+    <script>
+        // profile visibility toggle button
+
+
+
+        // edit save button 
+        let editBtn = document.getElementById("editBtn")
+        let saveBtn = document.getElementById("saveBtn")
+        editBtn.addEventListener("click", function (event) {
+            event.preventDefault(); // Prevent default form submission behavior
+            var formElements = document.getElementById("profileForm").elements;
+            for (var i = 0; i < formElements.length; i++) {
+                var element = formElements[i];
+                // Remove disabled attribute from input, select, and textarea elements
+                if (element.tagName === "INPUT" || element.tagName === "SELECT" || element.tagName === "TEXTAREA") {
+                    element.removeAttribute("disabled");
+                }
+            }
+            editBtn.style.display = "none"
+            saveBtn.style.display = "inline-block"
+        });
+
+
+        saveBtn.addEventListener("click", async function (event) {
+            event.preventDefault(); // Prevent default form submission behavior
+            saveBtn.style.display = "none"
+            editBtn.style.display = "inline-block"
+            var object = {};
+            var formElements = document.getElementById("profileForm").elements;
+            for (var i = 0; i < formElements.length; i++) {
+                var element = formElements[i];
+                function capitalizeFirstLetters(str) {
+                    // Split the string into an array of words
+                    const words = str.split(" ");
+
+                    // Iterate through each word in the array
+                    const capitalizedWords = words.map(word => {
+                        // Capitalize the first letter of each word and lowercase the rest
+                        return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+                    });
+
+                    // Join the capitalized words back into a single string
+                    return capitalizedWords.join(" ");
+                }
+                // Remove disabled attribute from input, select, and textarea elements
+                if (element.tagName === "INPUT" || element.tagName === "SELECT" || element.tagName === "TEXTAREA") {
+                    if (element.name === "fullname") {
+
+                        object[element.name] = capitalizeFirstLetters(element.value)
+                    }
+                    else {
+                        object[element.name] = element.value
+                    }
+
+                }
+            }
+
+            // Re-enable the disabled attribute on form fields
+            var formElements = document.getElementById("profileForm").elements;
+            for (var i = 0; i < formElements.length; i++) {
+                var element = formElements[i];
+                // Add disabled attribute back to input, select, and textarea elements
+                if (element.tagName === "INPUT" || element.tagName === "SELECT" || element.tagName === "TEXTAREA") {
+                    element.setAttribute("disabled", "disabled");
+                }
+            }
+
+            console.log(object);
+
+            // Send the data to the backend using AJAX
+            await $.ajax({
+                type: 'POST',
+                url: '/editprofile', // Update the URL with your server endpoint
+                data: object,
+                success: function (response) {
+                    // Handle success response
+                    console.log(response);
+
+                },
+                error: function (xhr, status, error) {
+                    // Handle error
+                    console.error(error);
+                }
+            });
+        });
+
+
+    </script>
+</body>
+
+</html>
